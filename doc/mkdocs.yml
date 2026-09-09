@@ -1,0 +1,49 @@
+site_name: eviManager Documentation
+site_description: Repository documentation published with MkDocs Material on GitLab Pages.
+docs_dir: doc
+theme:
+  name: material
+  custom_dir: overrides
+  logo: assets/brand/hseag-logo.png
+  favicon: assets/brand/favicon.ico
+  language: en
+  font:
+    text: Roboto
+    code: Roboto Mono
+  palette:
+    - scheme: default
+      primary: custom
+      accent: custom
+  features:
+    - navigation.sections
+    - navigation.top
+    - search.highlight
+    - content.code.copy
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/solid/globe
+      link: https://www.hseag.com/
+      name: HSE AG
+    - icon: fontawesome/solid/newspaper
+      link: https://blog.hseag.com/
+      name: HSE Blog
+plugins:
+  - search
+extra_css:
+  - stylesheets/extra.css
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+copyright: Copyright &copy; 2026 HSE AG
+nav:
+  - Home: index.md
+  - Downloads: downloads.md
+  - User Guide: guide.md
