@@ -1,31 +1,37 @@
 # eviManager
 
-eviManager is the Windows service application for HSE AG's Colibri instruments.
-It detects connected instruments, updates firmware, runs self-tests and exports
-technical reports as PDF files. See the [User Guide](doc/doc/guide.md).
+eviManager is a Windows service application for supported HSE AG Colibri
+instruments. It gives service personnel one place to identify an instrument,
+inspect its status and perform routine maintenance tasks.
 
-## Download
+## What eviManager does
 
-The precompiled Windows x64 portable EXE and its SHA-256 checksum are in
-[`downloads/`](downloads/). The EXE includes the .NET runtime and requires no
-installation. The application source code is not included in this repository.
+When a supported instrument is connected by USB, eviManager detects it and
+shows its model, serial number and installed firmware version. Depending on the
+instrument, the application can:
 
-## Documentation
+- update firmware from an approved `.srec` firmware image;
+- run the instrument self-test;
+- export the self-test result as a PDF technical report; and
+- control the instrument status LED during service checks.
 
-The documentation can be rebuilt using only this repository and Python 3.11+:
+eviManager supports the `eviDense UV` photometer and the `eviFluor Duo`
+fluorometer.
 
-```sh
-python -m pip install -r doc/requirements-docs.txt
-python -c "import shutil; shutil.copytree('downloads', 'doc/doc/downloads', dirs_exist_ok=True)"
-python -m mkdocs build --strict -f doc/mkdocs.yml -d ../public
-```
+## Who it is for
 
-The generated site is in `public/` and includes the precompiled download. No .NET
-SDK or access to the application repository is needed. A GitHub Pages workflow
-can run these commands and publish that directory.
+eviManager is intended for trained service personnel maintaining supported
+Colibri instruments. It is not an instrument control application for routine
+measurements. Use only firmware supplied for the connected instrument and do
+not disconnect the USB cable while a firmware update is in progress.
 
-Releases are published to `main`; pre-release builds are published to
-`pre-release`. Publication preserves `.github/` and `ci/`, so GitHub workflows
-and their helper scripts can be maintained in this repository. New publication
-branches inherit these directories from `main`. Other files are replaced by
-the publication export.
+## Getting started
+
+Download the current Windows x64 portable executable from
+[`downloads/`](downloads/). The download includes the required .NET runtime
+and can be run directly; no separate installation is necessary. Connect the
+instrument with a USB-C cable and start eviManager. The application selects the
+appropriate interface after it detects the instrument.
+
+For detailed instructions, see the [User Guide](doc/doc/guide.md). The matching
+SHA-256 checksum is published alongside each download.
