@@ -2,10 +2,10 @@
 
 | File | Description |
 | --- | --- |
-| [eviManager-1.0.8-ci.1.exe](downloads/eviManager-1.0.8-ci.1.exe) | Windows x64 portable EXE. **Includes the .NET 8 Desktop Runtime** — no separate .NET installation is required. Run directly, no installation required; extracts its bundled runtime and configuration on first use. |
+| [eviManager-1.0.8-ci.8.exe](downloads/eviManager-1.0.8-ci.8.exe) | Windows x64 portable EXE. **Includes the .NET 8 Desktop Runtime** — no separate .NET installation is required. Run directly, no installation required; extracts its bundled runtime and configuration on first use. |
 
 A matching checksum file is published next to the download:
-[eviManager-1.0.8-ci.1.exe.sha256](downloads/eviManager-1.0.8-ci.1.exe.sha256).
+[eviManager-1.0.8-ci.8.exe.sha256](downloads/eviManager-1.0.8-ci.8.exe.sha256).
 
 !!! note
     The filename includes the application version derived from Git tags.
