@@ -44,7 +44,11 @@ jobs:
             location.replace(`main/${location.search}${location.hash}`);
           </script>
           EOF
-          PAGES_URL="https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY#*/}/${BRANCH_NAME}/"
+          
+          find public -maxdepth 5 -type f -print
+          
+          
+          PAGES_URL="${PAGE_URL%/}/${BRANCH_SLUG}"
           printf 'Documentation will be available at: %s\n' "$PAGES_URL"
 
       - name: Upload Pages artifact
