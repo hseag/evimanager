@@ -31,9 +31,10 @@ jobs:
           test -n "$BRANCH_SLUG"
           PAGES_DIR="public/${BRANCH_SLUG}"
 
-          mkdir -p public
+          python -m pip install mkdocs-material
           rm -rf "$PAGES_DIR"
           mkdir -p "$PAGES_DIR"
+          mkdocs build --site-dir "$PAGES_DIR"
           cp -r downloads "$PAGES_DIR/"
 
           cat > public/index.html <<'EOF'
@@ -43,7 +44,8 @@ jobs:
             location.replace(`main/${location.search}${location.hash}`);
           </script>
           EOF
-          printf 'Documentation will be available at: %s\n' "$PAGES_DIR"
+          PAGES_URL="https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY#*/}/${BRANCH_NAME}/"
+          printf 'Documentation will be available at: %s\n' "$PAGES_URL"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5
