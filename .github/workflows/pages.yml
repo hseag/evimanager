@@ -43,6 +43,7 @@ jobs:
             location.replace(`main/${location.search}${location.hash}`);
           </script>
           EOF
+          printf 'Documentation will be available at: %s\n' "$PAGES_DIR"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5
