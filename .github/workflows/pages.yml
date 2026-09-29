@@ -27,7 +27,6 @@ jobs:
 
       - name: Prepare Pages content
         env:
-          PAGE_URL: ${{ needs.deploy.outputs.page_url }}
           BRANCH_NAME: ${{ github.ref_name }}      
         run: |
           BRANCH_SLUG="$(printf '%s' "$BRANCH_NAME" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9.]+/-/g; s/^[.-]+//; s/[.-]+$//' | cut -c1-63)"
@@ -47,12 +46,6 @@ jobs:
             location.replace(`main/${location.search}${location.hash}`);
           </script>
           EOF
-          
-          find public -maxdepth 5 -type f -print
-          
-          
-          PAGES_URL="${PAGE_URL%/}/${BRANCH_SLUG}"
-          printf 'Documentation will be available at: %s\n' "$PAGES_URL"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5
@@ -86,8 +79,10 @@ jobs:
           BRANCH_NAME: ${{ github.ref_name }}
         run: |
           BRANCH_SLUG="$(printf '%s' "$BRANCH_NAME" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9.]+/-/g; s/^[.-]+//; s/[.-]+$//' | cut -c1-63)"
+          
           test -n "$BRANCH_SLUG"
           url="${PAGE_URL%/}/${BRANCH_SLUG}/index.html"
+          printf 'Documentation will be available at: %s\n' "${PAGE_URL%/}/${BRANCH_SLUG}/"
           echo "Checking $url"
           for i in $(seq 1 12); do
             if curl --fail --silent --show-error --location "$url" -o page.html; then
