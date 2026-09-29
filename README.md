@@ -33,5 +33,5 @@ and can be run directly; no separate installation is necessary. Connect the
 instrument with a USB-C cable and start eviManager. The application selects the
 appropriate interface after it detects the instrument.
 
-For detailed instructions, see the [User Guide](doc/doc/guide.md). The matching
+For detailed instructions, see the [User Guide](doc/guide.md). The matching
 SHA-256 checksum is published alongside each download.
